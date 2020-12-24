@@ -9,4 +9,16 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
+  <!-- servlet등록, 해당 서블릿에서 처리를 할 url 등록 -->
+  <servlet>
+  	<servlet-name>basicServlet</servlet-name>
+  	<servlet-class>kr.or.ddit.servlet.basic.BasicServlet</servlet-class>
+  </servlet>
+  
+  <!--서블릿에서처리할 url매핑  -->
+  <servlet-mapping>
+  	<servlet-name>basicServlet</servlet-name>
+  	<url-pattern>/basicServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

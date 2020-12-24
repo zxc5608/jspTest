@@ -1,0 +1,37 @@
+Marven Project 
+
+Group id: 해당 프로젝트를 진행하는 회사에 대한 정보  
+
+일반적으로 회사의 도메인역순으로 기술 
+
+Naver.com ==>com.naver 
+Google.com==> com.google 
+ddit.or.kr ==> kr.or.ddit 
+
+Artifact id: Group id에 해당하는회사에서 진행ㅅ하는 프로젝트명 
+
+Google : gmail, google drive 
+
+
+Version: 프로젝트의 버전 
+
+대.중.소   3.5.2 
+Jar :java archive :클래스를 묶어 놓은 파일 , 압축파일 
+Class , html , jsp , image ,css javascript 
+
+War.L Web Archive : 웹 프로그램을 묶어 놓은 파일 
+
+Tomcat의 Webapps폴더에 war파일을 복사  해놓고 톰캣을 기동하면  war파일을 톰캣이 자동으로 압축을해제하여 웹 어플리케이션을 서비스되도록한다 
+
+ 
+
+ 
+pom: project object Model- 프로젝트에 대한 설정정보
+	해당  프로젝트를 만든 회사
+	프로젝트이름
+	프로젝트의 비전
+	프로젝트에서 필요로 하는 의존성 (dependency)- 라이브러리(ojdbc6.jar)
+	
+pom.xml
+	
+

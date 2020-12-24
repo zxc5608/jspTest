@@ -4,4 +4,21 @@
   <artifactId>jsp</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
+  
+  <properties>
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
+</properties>
+  
+  <!--의존성들 : 해당 프로젝트에서 사용할 의존성(라이브러리)를 관리한다.-->
+  <dependencies>
+  	<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+		<dependency>
+    	<groupId>javax.servlet</groupId>
+    	<artifactId>javax.servlet-api</artifactId>
+    	<version>3.0.1</version>
+    	<scope>provided</scope>
+	</dependency>
+
+  </dependencies>
 </project>

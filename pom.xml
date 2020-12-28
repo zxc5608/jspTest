@@ -9,6 +9,18 @@
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
 </properties>
+<build>
+	<plugins>
+		<plugin>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<configuration>
+				<source>${java.version}</source>
+				<target>${java.version}</target>
+				<encoding>utf-8</encoding>
+			</configuration>
+		</plugin>
+	</plugins>
+</build>
   
   <!--의존성들 : 해당 프로젝트에서 사용할 의존성(라이브러리)를 관리한다.-->
   <dependencies>
@@ -17,8 +29,23 @@
     	<groupId>javax.servlet</groupId>
     	<artifactId>javax.servlet-api</artifactId>
     	<version>3.0.1</version>
-    	<scope>provided</scope>
+    	 <scope>provided</scope>
 	</dependency>
+		
+	<!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
+	<dependency>
+	    <groupId>ch.qos.logback</groupId>
+	    <artifactId>logback-classic</artifactId>
+	    <version>1.2.3</version>
+	</dependency>
+	
+	<!-- scope
+		생략시(default)compile-컴파일 과정부터 배포되는 과정까지 해당 라이브러리가 필요함을 의미
+		test: test과정 까지만 필요, 배포시 (package)시 까지 제외 됨
+		provided(제공이 되어진다): 운영환경에서 해당 라이브러리가 제공이됨(배포할때 빠짐) 
+		
+		
+	 -->
 
   </dependencies>
 </project>

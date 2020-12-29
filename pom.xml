@@ -39,12 +39,19 @@
 	    <version>1.2.3</version>
 	</dependency>
 	
+	<!-- https://mvnrepository.com/artifact/junit/junit -->
+	<dependency>
+	    <groupId>junit</groupId>
+	    <artifactId>junit</artifactId>
+	    <version>4.13.1</version>
+	    <scope>test</scope>
+	</dependency>
+	
 	<!-- scope
 		생략시(default)compile-컴파일 과정부터 배포되는 과정까지 해당 라이브러리가 필요함을 의미
 		test: test과정 까지만 필요, 배포시 (package)시 까지 제외 됨
 		provided(제공이 되어진다): 운영환경에서 해당 라이브러리가 제공이됨(배포할때 빠짐) 
-		
-		
+	
 	 -->
 
   </dependencies>

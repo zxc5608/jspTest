@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
    <%--jsp메소드, 변수 선언부 --%>
- <%!
+
+<%!
  //메소드 선언
  private int calculate(int n) {
 /* 		 
@@ -17,7 +18,6 @@
 	else
 		return n *calculate(--n);
  }
- 
  %>
 <!DOCTYPE html>
 <html>

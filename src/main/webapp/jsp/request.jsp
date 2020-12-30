@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<% %>				<!-- 미리선언되어있는 내장 객체 -->
 	request.getContentType(): <%=request.getContentType()%><br>
 	request.getMethod(): <%=request.getMethod() %><br>
 	request.getRequestURI(): <%=request.getRequestURI() %><br>

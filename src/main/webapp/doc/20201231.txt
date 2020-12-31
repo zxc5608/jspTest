@@ -1,0 +1,68 @@
+하나의 서버에 복수의 웹 어플리케이션을 기동하는 경우에
+발생할 수 있는 url충동
+
+첫번째 웹 어플리케이션: 수업시간에 진행하는 jsp프로제트, 컨텍스트 패스: /
+	webapp/jsp/basic.jsp
+	==> localhost/jsp/basic.jsp
+두번쨰 웹 어플리케이션: 신규 프로젝트 생성, 컨텍스트 패스: /jsp   <<얘가 우선
+	webapp/basic.jsp
+	==>localhost/jsp/basic.jsp
+	
+4교시
+========> contextPath가 먼저 적용되어 두번째 웹 어플리케이션에 응답을 생성한 것을 확인
+클라이언트 입장에서는 url만 보고서 contextPath인지 일반폴더를 가리키는 경로인지를 판단할수는 없다
+
+
+jsp기본 객체
+스크립틀릿에서 별도로 선언 없이 사용할 수 있는, 미리 선언되어있는 객체
+jsp파일이 servlet으로 변환되는 과정(서버가 변환) 에서 선언되어잇는 것을 확인 할수있다
+(work폴더에서 확인)
+
+
+(type:PageContext)
+pageContext : 소멸시점: ?? ---
+			4개의 scope에 접근할수있는 객체
+			getAttribute, setAttribute, findAttribute() (pageContext => request => session => application)
+			 
+			  
+			 jsp에 선언된 다른 내장객체를 관리
+			 getPage(), getRequest(), getSession(), getServletContext()
+			 
+(type:HttpServletRequest)
+request : (scope)	소멸 시점:요청에 대한 응답이 생성된이후
+
+(type: HttpSession)
+session : 서버의 사용자별로 할당되는공간, 사용자를 식별하기 위해 사용된다(cookie-session)
+		소멸시점= 특정시간이 지난후(서버에 설정된 시간만큼 서버로 요청을 안보내면 소멸)
+					or 강제로 삭제 가능 (session.invalidate())
+		
+application					: 서버 메모리에 할당되는 공간, 서버네 하나만 존재하는 공간
+(type:servletContext)		  web.xml에 설정한 초기화 파라미터 정보를 얻어올수있음
+↑는 중요 
+
+--------------------------------------이런게있다.
+ Page :jsp페이지 객체(인스턴스)를 의미
+ 		_jspService()
+ 
+ config: 서블릿 컨테이너가 서블릿 초기화시 사용하는 설정을 저장한 객체 
+ 		servlet의 init메소드의 인자로 전달된다.
+ 
+out :응답 생성을 위한 출력 객체 
+	 servlet.getWriter() ==> printwriter type 객체반환, PrintWriter 객체와 유사
+	 
+	 jsp에서 문자열을 생성하기 위해 표현식을 사용 
+	 자바의 반복문을 사용하며 표현식을 사용하기 위해서는 다음과 같은 형태로 코드를 작성함
+	 
+	 <% for(int i=0; i<10;i++){ %>
+		 <%= i %> 
+		 <% } %>
+	
+	스크립틀릿과 표현식의 구문 표기 <% , <%= 를 열고 닫는 부분으로 코드 가독성이 떨어짐
+	out 객체를 이용하면 표현식을 사용하지 않고도 문자를 출력할 수 있음
+	 
+	 <% for(int i=0; i<10;i++){ 
+		  out.write(i); 
+		  } %>
+	
+	타임즈 테이블을 out객체로 해보자!
+	 

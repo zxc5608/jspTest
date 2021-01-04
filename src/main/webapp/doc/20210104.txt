@@ -1,0 +1,106 @@
+HTTP프로토콜의 특징
+
+1. 비연결성
+	.요청을 보내고 응답을 받게되면 서버와의 연결을 끊어진다
+	.서버로 재요청시 서버는 클라이언트가 누구인지 알수있도록 session과 cookie를 이용
+
+2. 웹 브라우저는 서버로 요청시 해당 서버(도메인)에 설정된 쿠키 값을 항상 같이 전송한다
+	. 서버가 클라이언트가 누군지 식별할때 사용
+	. cookie : 브라우저에 저장되는 정보
+	
+3. java기반 서버는 요청을 받게되면 해당 요청의 쿠키 정보중에 
+	JSESSIONID라는 쿠키가 있는지 확인한다
+	
+	JSESSIONID 쿠키가 없을 경우
+	서버는 신규 접속 요청이라고 판단, SESSION을 새롭게 만들고 응답을 생성할 때
+	SESSION ID(J_ SESSIONID)를 응답 헤더에 포함하고
+	해당 응답을 받을 브라우저는 JSESSIONID쿠키 값을 브라우저에 저장한다. 
+	
+	JSESSIONID쿠키가 있을 경우 
+	JSESSIONID에 해당하는 SESSION을 사용 (기존 접속한 사용자로 인식)
+	
+웹에서 사용자(client)란? 웹브라우저를 말한다
+동일한 인물?(X)
+
+cookie 길찾기 ==> 동화 
+
+속성: 요청을 처리할수있는 과정에서 servlet/jsp 사이에서 공유하는 정보
+scope: 속성을 담을수 있는 영역, 객체
+
+
+scope 객체 
+page(pageContext)			:해당 jsp페이지 내에서만 유효한 공간(java의 block안에 선언된 변수)
+request (HttpServletRequest): 요청이 처리될 때 까지만 유효한 공간 (java의 지역변수)
+session (HttpSession)		: 세션이 유효한 동안 유지되는 공간(java 인스턴스 객체)
+applicaion(ServletContext)	: 웹 어플리케이션에서 하나만 유지되는 공간(java의 static변수)
+
+
+scope객체 실습
+
+웹 브라우저로 다음 주소에 접속 : localhost/scope(GET)
+해당 요청을 처리해줄 servlet생성 (kr.or.ddit.servlet.scope.Scope.java)
+GET 요청에 대해서는 화면을 webapp/jsp/scope.jsp로 응답 생성 위임
+
+scope.jsp에서는 하나의 input태그 (name - scope)와 submit버튼을 생성
+전송 메서드는 Post , 전송주소는 /scope
+
+Scope.java의 doPost에서는 요청 파라미터중 scope파라미터를 확인하여
+request, session , application, scope에 다음과 같이 속성을 저장 
+
+request:속성명 =request,속성값=scope파라미터값 +"_request"
+session:속성명 =session속성값=scope파라미터값 +"_session"
+application:속성명 =application,속성값=scope파라미터값 +"_application"
+
+속성 설정이 끝나면 webapp/jsp/scopeResult.jsp로 forword
+scopeResult.jsp에서는 Scope servlet 에서 설정한 3개의 속성을 
+속성명: 속성값
+속성명: 속성값
+속성명: 속성값 형식으로 화면에 출력
+
+scope 객체의 속성관련 메소드 
+속성 조회: 스코프객체.getAttribute("속성명"),반환타입: Object
+				***getParamter("파라미터명"), 반환타입: String
+				
+속성 저장: 스코프객체.setAttribute("속성명","속성값"), 반환타입 : void
+
+속성 삭제 : 스코프객체. removeAttribute("속성명"),반환타입 : void
+
+속성이름검색: 스코프 객체 : getAttributeNames(),반환타입: Enumeration
+
+1.localhost/scope접속
+2. input tag에 brown값 입력후 전송버튼 클릭
+3. 결과 화면 확인
+	request: brown_request
+	session: brown_session
+	application: brown_ application
+	
+2] 1번과 같은 브러우저를 사용하여
+localhost/jsp/scopeResult.jsp로 바로 접속시
+  request: null 이다  속성을 저장하는 로직이 없다 
+  session: brown_session
+  application: brown_ application
+
+3] 1번과 다른 브러우저를 사용하여
+localhost/jsp/scopeResult.jsp로 바로 접속시
+  request:null  
+  session: null
+  application:brown_ application  공용 
+
+4] 3번과 동일한 브라우저를 사용하여
+localhost/scope로 접속
+input태그에 sally값 입력후 전송
+  	request:sally_request
+	session:sally_session
+	application :sally_application
+	
+5] 1번과 동일한 브라우저를 사용하여
+localhost/jsp/Result.jsp로 접속
+
+request:null
+session:brown_session 1번 client의 세션
+application :sally_application	마지막을 바꾼공간
+
+1번 브라우저 크롬
+3번 엣지
+	
+	

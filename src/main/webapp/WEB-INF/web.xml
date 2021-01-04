@@ -9,29 +9,31 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
-  <!-- servlet등록, 해당 서블릿에서 처리를 할 url 등록 -->
   <servlet>
-  	<servlet-name>basicServlet</servlet-name>
-  	<servlet-class>kr.or.ddit.servlet.basic.BasicServlet</servlet-class>
-  	<load-on-startup>1</load-on-startup>
+    <servlet-name>basicServlet</servlet-name>
+    <servlet-class>kr.or.ddit.servlet.basic.BasicServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
   </servlet>
-  
-  <!--서블릿에서처리할 url매핑  -->
   <servlet-mapping>
-  	<servlet-name>basicServlet</servlet-name>
-  	<url-pattern>/basicServlet</url-pattern>
+    <servlet-name>basicServlet</servlet-name>
+    <url-pattern>/basicServlet</url-pattern>
   </servlet-mapping>
-  
   <servlet>
-   <servlet-name>TimesTableServlet</servlet-name>
-   <servlet-class>kr.or.ddit.servlet.basic.TimesTableServlet</servlet-class>
+    <servlet-name>TimesTableServlet</servlet-name>
+    <servlet-class>kr.or.ddit.servlet.basic.TimesTableServlet</servlet-class>
   </servlet>
-  
   <servlet-mapping>
-  	<servlet-name>TimesTableServlet</servlet-name>
-  	<url-pattern>/TimesTableServlet</url-pattern>
+    <servlet-name>TimesTableServlet</servlet-name>
+    <url-pattern>/TimesTableServlet</url-pattern>
   </servlet-mapping>
-  
-  
+  <servlet>
+    <description></description>
+    <display-name>Scope</display-name>
+    <servlet-name>Scope</servlet-name>
+    <servlet-class>kr.or.ddit.servelt.scope.Scope</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Scope</servlet-name>
+    <url-pattern>/Scope</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -84,6 +84,7 @@ public class LoginController extends HttpServlet {
 		//			서버안에서 이루어지는 작업으로 클라이언트 입장에서는 누가 응답을 생성했는지 알 수 없다.
 		//			request.getRequestDispatcher(url) 를 이용하여 requestDistpatcher
 		//			객체를 얻어 forward(request,response를 실행
+		
 		// 		**같은 웹 어플리케이션 안에서 일어나는 일이므로 contextPath를 지정하지 않는다. 
 		
 		

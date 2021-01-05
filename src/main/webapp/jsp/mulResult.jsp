@@ -7,8 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-	sumResult: <%=session.getAttribute("sumResult") %>
-	
+ mul: <%=session.getAttribute("mulResult") %>
 </body>
 </html>

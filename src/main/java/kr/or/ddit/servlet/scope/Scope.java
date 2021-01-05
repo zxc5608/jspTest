@@ -24,6 +24,7 @@ public class Scope extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		// Scope.java의 doPost에서는 요청 파라미터중 scope파라미터를 확인하여 
+		
 		String scopeParameter= req.getParameter("scope");
 		//스코프객체.setAttribute("속성명","속성값"), 반환타입 : void
 		//request, session , application, scope에 다음과 같이 속성을 저장
@@ -36,6 +37,7 @@ public class Scope extends HttpServlet {
 		HttpSession session= req.getSession();
 		session.setAttribute("session",scopeParameter+ "_session");
 		
+		//request.getSession().setattribute("session",scopeParameter + "_session")
 		
 		//application:속성명 =application,속성값=scope파라미터값 +"_application"
 		ServletContext application= getServletContext();

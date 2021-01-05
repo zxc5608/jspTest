@@ -1,0 +1,44 @@
+페이지 모듈화
+
+1. 동적 include
+	RequestDispatcher.include()
+	실행시점
+	
+2. 정적 include
+	<%@include file=""/>
+	컴파일시점
+
+에러페이지
+1. jsp페이지별로 errorPage속성에 에러 발생시 이동할 jsp파일 기술(x)
+2. 에러코드(상태코드)별 예외 페이지 설정
+	web.xml 404, 500
+	
+3. 예외 타입별 예외 페이지 설정
+	1. ArithmeticException 이 발생되는 jsp파일을 하나 생성 webapp/jsp/ari.jsp
+	2. ArithmeticException 이 발생되었을때 응답을 대신 생성해줄 webapp/error/type/ artError.jsp를 
+	3. web.xml에 예외 타입별 에러 페이지 설정
+	
+	4. 서버 재시작 
+	5. localhost/jsp/ari.jsp로 접속해서 ArithmeticException 발생하게끔 유도하여
+	   설정한 에러페이지로 이동되는지 확인
+	   
+	   
+탐구과제
+1. webapp/error/type/runError.jsp를 생성 (텍스트는 본인 편한대로)
+2.	RuntimeException에러가 발생할수 있는 jsp페이지 생성
+	webapp/jsp/run.jsp
+3. web.xml에 runtimeException예외에 대해 runError.jsp페이지가 응답을 생성하도록 설정
+4. localhost/jsp/run.jsp로 접속
+5. **** 어떤 에러메세지가 나오는지 확인
+	runtimeException이 발생한 것을  eclipse console로그를 통해 확인
+	결과 : runError.jsp에서 응답이 옴 
+		
+6.	*** localhost/jsp/ari.jsp접속시  어떤에러 페이지로 이동하는지 확인
+	결과 ariError.jsp에서 응답이 옴
+	 
+7. arithmeticException, runtimeException이 발생한 것은 서버에러로 볼수있는데
+   500.html(jsp)에러 페이지에서 응답이 생성되지 않았는데 
+	
+	<error -page>엘레멘트를 기술한 순서가 응답에 영향을 미치는지 확인
+	==> error-page 엘레먼트 기술 순서가 영향을 미치지 않음
+		예외 타입 에러 페이지 설정이 에러코드 에러페이지 설정보다 우선 

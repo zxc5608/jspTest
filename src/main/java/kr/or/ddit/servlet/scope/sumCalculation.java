@@ -23,16 +23,15 @@ public class sumCalculation extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session= req.getSession();
-		int num1 = Integer.parseInt(req.getParameter("num1"));
-		int num2 = Integer.parseInt(req.getParameter("num2"));
+		int start = Integer.parseInt(req.getParameter("start"));
+		int end = Integer.parseInt(req.getParameter("end"));
 		
 		int sum=0;
-		for(int i=num1;i<=num2;i++) {
+		for(int i=start;i<=end;i++) {
 			sum+=i;
 		}
-		logger.debug("합:"+sum);
-		session.setAttribute("num1",num1);
-		session.setAttribute("num2",num2);
+		logger.debug("{}",sum);
+		
 		session.setAttribute("sumResult",sum);
 		
 		req.getRequestDispatcher("/jsp/sumResult.jsp").forward(req, resp);

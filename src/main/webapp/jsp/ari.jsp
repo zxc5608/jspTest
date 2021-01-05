@@ -7,8 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<%
+	int a= 5; 
+	int b= 0;
+	int c= a / b;
+	%>
 
-	sumResult: <%=session.getAttribute("sumResult") %>
-	
 </body>
 </html>

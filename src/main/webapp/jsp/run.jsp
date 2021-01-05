@@ -7,8 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-	sumResult: <%=session.getAttribute("sumResult") %>
-	
+	<%
+	if( 1 == 1){
+	throw new RuntimeException();
+	}
+	%>
 </body>
 </html>

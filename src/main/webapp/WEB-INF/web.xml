@@ -58,6 +58,7 @@
   	<exception-type>java.lang.RuntimeException</exception-type>
   	<location>/error/type/runError.jsp</location>
   </error-page>
+  
   <!-- error page설정 -->
   <error-page>
   	<error-code>404</error-code>

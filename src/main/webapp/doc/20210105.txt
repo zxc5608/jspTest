@@ -15,7 +15,7 @@
 	
 3. 예외 타입별 예외 페이지 설정
 	1. ArithmeticException 이 발생되는 jsp파일을 하나 생성 webapp/jsp/ari.jsp
-	2. ArithmeticException 이 발생되었을때 응답을 대신 생성해줄 webapp/error/type/ artError.jsp를 
+	2. ArithmeticException 이 발생되었을때 응답을 대신 생성해줄 webapp/error/type/ ariError.jsp를 
 	3. web.xml에 예외 타입별 에러 페이지 설정
 	
 	4. 서버 재시작 
@@ -42,3 +42,17 @@
 	<error -page>엘레멘트를 기술한 순서가 응답에 영향을 미치는지 확인
 	==> error-page 엘레먼트 기술 순서가 영향을 미치지 않음
 		예외 타입 에러 페이지 설정이 에러코드 에러페이지 설정보다 우선 
+		
+cookie확인
+	1.개발자도구
+	2.script
+		document.cookie
+		
+cookie 구성
+쿠키이름 = 쿠키값;쿠키이름2 = 쿠키값2;쿠키이름3 = 쿠키값3
+
+특정 쿠키의 값을 확인하려면??
+userid=brown; rememberme=Y; test=t
+
+
+

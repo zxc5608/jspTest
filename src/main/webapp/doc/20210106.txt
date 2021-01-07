@@ -1,0 +1,14 @@
+쿠키를 이용하여 구현하고자하는기능
+
+rememberme를 체크하고 로그인햇을때 userid와remember라는 이름으로 쿠키를 저장하여
+
+다시 login.jsp에 접속햇을때 사용자가 id가 마지막 접속시 아이디로 값이 채워지고
+
+rememberme 체크 박스가 체크되어있도록 설정
+
+$(function(){
+	클릭이벤트 감지(sign in 버튼클릭)
+	<button class="btn btn-lg btn-primary btn-block" type="button" id = "signin">Sign in</button>
+	쿠키설정 
+	submit
+)};

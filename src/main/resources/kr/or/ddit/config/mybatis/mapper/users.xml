@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="users">
+	<!--select된 컬럼과 resultType에 기술된 클래스의 필드 이름이 동일하면
+		자동으로 값을 넣어준다
+		resultType: 한 행의 정보를 저장핤구있는 클래스 타입을 명시  -->
+  <select id="selectAllUser" resultType="userVo">
+    SELECT * 
+    FROM users
+ 
+ </select>
+
+  <select id="selectUser" resultType="userVo" parameterType="String">
+    SELECT * 
+    FROM users
+    WHERE userid= #{value}
+  </select>
+  
+  
+  <select id ="selectpagingUser" resultType="userVo" parameterType="pageVo">
+  SELECT *
+	FROM
+	(SELECT ROWNUM rn, a.*
+	 FROM
+	    (SELECT *
+	     FROM users
+	     ORDER BY userid) a
+	  WHERE ROWNUM &lt;= #{page} * #{pageSize})
+	WHERE rn BETWEEN (#{page}-1) * #{pageSize} + 1 AND #{page} * #{pageSize}
+  
+  
+  </select>
+  <!-- 전체 사용자 수 조회 -->
+  <select id="selectAlluserCnt" resultType="int">
+	  SELECT COUNT(*)
+	  FROM users
+  </select>
+</mapper>  

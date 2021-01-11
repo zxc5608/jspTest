@@ -53,6 +53,20 @@
 		provided(제공이 되어진다): 운영환경에서 해당 라이브러리가 제공이됨(배포할때 빠짐) 
 	
 	 -->
+	 <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+	<dependency>
+		<groupId>org.mybatis</groupId>
+		<artifactId>mybatis</artifactId>
+		<version>3.5.6</version>
+	</dependency>
+	 
+		 <!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc6 -->
+	<dependency>
+	    <groupId>com.oracle.database.jdbc</groupId>
+	    <artifactId>ojdbc6</artifactId>
+	    <version>11.2.0.4</version>
+	</dependency>
+		 
 
   </dependencies>
 </project>

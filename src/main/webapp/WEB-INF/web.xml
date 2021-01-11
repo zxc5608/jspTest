@@ -46,31 +46,23 @@
     <servlet-name>mulCalculation</servlet-name>
     <url-pattern>/mulcalculation</url-pattern>
   </servlet-mapping>
-    
   <error-page>
-  <!--class full name :패키지 . 클래스명   c s t  ari-->
-  	<exception-type>java.lang.ArithmeticException</exception-type>
-  	<location>/error/type/ariError.jsp</location>
+    <exception-type>java.lang.ArithmeticException</exception-type>
+    <location>/error/type/ariError.jsp</location>
   </error-page>
-  
   <error-page>
-  <!--class full name :패키지 . 클래스명   c s t  ari-->
-  	<exception-type>java.lang.RuntimeException</exception-type>
-  	<location>/error/type/runError.jsp</location>
+    <exception-type>java.lang.RuntimeException</exception-type>
+    <location>/error/type/runError.jsp</location>
   </error-page>
-  
-  <!-- error page설정 -->
   <error-page>
-  	<error-code>404</error-code>
-  	<location>/error/404/404.jsp</location>
+    <error-code>404</error-code>
+    <location>/error/404/404.jsp</location>
   </error-page>
-  
-   <error-page>
-  	<error-code>500</error-code>
-  	<location>/error/500/500.jsp</location>
+  <error-page>
+    <error-code>500</error-code>
+    <location>/error/500/500.jsp</location>
   </error-page>
 
-  
-  
+
   
 </web-app>

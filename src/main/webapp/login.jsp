@@ -110,10 +110,10 @@
         <h2 class="form-signin-heading">login</h2>
         
         <label for="userid" class="sr-only">userid</label>
-        <input type="text" name="userid" id="userid" value="" class="form-control" placeholder="사용자 아이디" required autofocus>
+        <input type="text" name="userid" id="userid" value="sally" class="form-control" placeholder="사용자 아이디" required autofocus>
         
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" name="pass" id="inputPassword" value="brownpass" class="form-control" placeholder="Password" required>
+        <input type="password" name="pass" id="inputPassword" value="sallyPass" class="form-control" placeholder="Password" required>
         
         <div class="checkbox">
           <label>

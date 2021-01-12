@@ -32,20 +32,12 @@ public class PagingUser extends HttpServlet{
 		
 		
 		//refactoring : 코드를(깔끔하게) 바꾸는데 기존 동작방식을 유지한채로 변경하는 기법   alt + shift + l 
-		String pageParam = req.getParameter("page");
-		String pageSizeParam = req.getParameter("pageSize");
 		
 		/*
 		 * request객체에서 제공하는 파라미터 관련메소드
 		 * 
 		 */
-		
-		int page= pageParam ==null ? 1 :Integer.parseInt(pageParam);
-		int pageSize= pageSizeParam==null ? 5 : Integer.parseInt(pageSizeParam);
-		
-		PageVo vo = new PageVo(page,pageSize);
-		
-	/*
+		/*
 		if(req.getParameter("page")==null){
 			page=1;
 		}else {
@@ -56,7 +48,15 @@ public class PagingUser extends HttpServlet{
 		}else {
 			pageSize = Integer.parseInt(req.getParameter("pageSize"));
 		}
-	*/
+		 */
+		String pageParam = req.getParameter("page");
+		String pageSizeParam = req.getParameter("pageSize");
+		
+		int page= pageParam ==null ? 1 :Integer.parseInt(pageParam);
+		int pageSize= pageSizeParam==null ? 5 : Integer.parseInt(pageSizeParam);
+		
+		PageVo vo = new PageVo(page,pageSize);
+		
 		Map<String, Object>map= userservice.selectpagingUser(vo);
 		
 		List<UserVo> userList= (List<UserVo>)map.get("userList");
@@ -66,8 +66,13 @@ public class PagingUser extends HttpServlet{
 	
 		req.setAttribute("userList", userList);
 		req.setAttribute("pagination",pagination);
+		req.setAttribute("pageVo",vo);
 		
 		req.getRequestDispatcher("/user/pagingUser.jsp").forward(req, resp);
+		
+		
+		
+		
 		
 	}
 	

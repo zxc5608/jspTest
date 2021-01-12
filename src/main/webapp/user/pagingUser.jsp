@@ -1,3 +1,4 @@
+<%@page import="kr.or.ddit.common.model.PageVo"%>
 <%@page import="java.util.List"%>
 <%@page import="kr.or.ddit.user.model.UserVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -27,9 +28,29 @@ List<UserVo>userlist=(List<UserVo>)request.getAttribute("userList");
 
 		
 %>
+
+<script>
+//문서로딩이 완료되고 나서 실행되는 영역
+$(function(){
+	$(".user").on("click",function(){
+		//this: 클릭 이벤트가 발생한 element
+		//data-속성명 data-userid, 속성명은 대소문자 무식하고 소문자로 인식
+		//data-userID==> data-userid
+		var userid = $(this).data("userid");
+		//var userid = ($(this).data("userid"));
+		$("#userid").val(userid);
+		$("#frm").submit();
+		
+		
+	});
+});
+</script>
 </head>
 
 <body>
+	<form id ="frm" action="<%=request.getContextPath()%>/user">
+		<input type= "hidden" id= "userid" name= "userid" value=""/>
+	</form>
 
 	
 	<%@include file="/common/header.jsp" %>
@@ -63,7 +84,7 @@ List<UserVo>userlist=(List<UserVo>)request.getAttribute("userList");
 		for(int i = 0;i<userlist.size();i++){
 				UserVo uservo = userlist.get(i);
 			
-				out.write("<tr>");
+				out.write("<tr class='user' data-userid="+uservo.getUserid()+">");
 				out.write("<td>"+uservo.getUserid()+"</td>");
 				out.write("<td>"+uservo.getUsernm()+"</td>");
 				out.write("<td>"+uservo.getAlias()+"</td>");
@@ -85,13 +106,44 @@ List<UserVo>userlist=(List<UserVo>)request.getAttribute("userList");
 		<a class="btn btn-default pull-right">사용자 등록</a>
 
 		<div class="text-center">
+		<!-- 페이지네이션 링크 활성 비활성  -->
+			<%
+			PageVo pageVo = ((PageVo)request.getAttribute("pageVo"));
+			
+			%>
 			<ul class="pagination">
+			<%--
+				pagination 이 4이므로 3번 반복된다
+				사용자수 16명
+				페이지 사이즈5
+				페이지 4페이지 
 				
-				<li><a href="<%=request.getContextPath() %>pagingUser?page=1&pageSize=5">1</a></li>
-				<li><a href="<%=request.getContextPath() %>pagingUser?page=2&pageSize=5">2</a></li>
-				<li><a href="<%=request.getContextPath() %>pagingUser?page=3&pageSize=5">3</a></li>
-				<li><a href="<%=request.getContextPath() %>pagingUser?page=4&pageSize=5">4</a></li>
-				<li><a href="<%=request.getContextPath() %>pagingUser?page=5&pageSize=5">5</a></li>
+			 --%>
+			 <%int pagination = (int)request.getAttribute("pagination");%>
+			 <li class="prev">
+				<a href="<%=request.getContextPath() %>pagingUser?page=1&pageSize=<%=pageVo.getPageSize()%>">«</a>
+			 </li>
+			 
+				<%for(int i=1; i<=pagination;i++){ 
+				
+					if(pageVo.getPage() == i){%> <!-- 루프돌고있는페이지랑 같은지 확인  -->
+						<li class= "active"><span><%=i %></span></li>
+					<% }
+					else{%>
+						<li><a href="<%=request.getContextPath() %>pagingUser?page=<%=i %>&pageSize=<%=pageVo.getPageSize()%>"><%=i %></a></li>
+					
+					<% }%>													
+				<% }%>	
+												
+				<li class="next">
+					<a href="<%=request.getContextPath() %>pagingUser?page=<%=pagination%>&pageSize=<%=pageVo.getPageSize()%>">»</a>
+				</li>
+				
+				
+				
+				
+				
+				
 			</ul>
 		</div>
 	</div>

@@ -3,6 +3,7 @@ package kr.or.ddit.user.service;
 import static org.junit.Assert.*;
 
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Test;
 
@@ -62,12 +63,15 @@ public class UserServiceTest {
 		@Test
 		public void selectpagingUserTest() {
 			/***Given***/
+			UserServiceI userservice= new UserService();
 			PageVo pvo= new PageVo(2,5);
-			UserDaoI userDao= new UserDao();
 			
 
 			/***When***/
-			List<UserVo> userList= userDao.selectpagingUser(pvo);
+			Map<String,Object> map= userservice.selectpagingUser(pvo);
+			List<UserVo> userList= (List<UserVo>)map.get("userList");
+			int userCnt=(int)map.get("userCnt");
+					
 			/***Then***/
 			assertEquals(5,userList.size());
 

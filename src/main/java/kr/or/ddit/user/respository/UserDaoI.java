@@ -31,4 +31,6 @@ public interface UserDaoI {
 	
 	//사용자 정보입력
 	int registUser(UserVo userVo);
+	//사용자 삭제
+	int deleteUser(String userid);
 }

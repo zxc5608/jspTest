@@ -51,4 +51,10 @@ public class UserService implements UserServiceI {
 	public int registUser(UserVo userVo) {
 		return userDao.registUser(userVo);
 	}
+
+	@Override
+	public int deleteUser(String userid) {
+		// TODO Auto-generated method stub
+		return userDao.deleteUser(userid);
+	}
 }

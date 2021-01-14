@@ -44,15 +44,25 @@
 		                 pass = #{pass},
 		                 reg_dt = #{reg_dt}, 
 		                 alias= #{alias},
+		                 
 		                 addr1 = #{addr1},
 		                 addr2 = #{addr2},
 		                 zipcode = #{zipcode}
+		                 
 		WHERE userid= #{userid}
   
   </update>
   
   <insert id="registUser" parameterType="userVo">
-  insert into users(userid, usernm, pass ,reg_dt, alias, addr1,addr2,zipcode)
-        values(#{userid},#{usernm},#{pass},#{reg_dt},#{alias},#{addr1},#{addr2},#{zipcode})
+  insert into users(userid, usernm, pass ,reg_dt,
+  					 alias, addr1,addr2,zipcode)
+  
+        values(#{userid},#{usernm},#{pass},#{reg_dt},
+        		#{alias},#{addr1},#{addr2},#{zipcode})
   </insert>
+  <!--사용자 삭제 파라미터를 문자열로 넘겨줬음-->
+  <delete id="deleteUser" parameterType="String">
+  	 DELETE users
+	 WHERE userid = #{value}
+  </delete>
 </mapper>  

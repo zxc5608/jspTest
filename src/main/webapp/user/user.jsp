@@ -19,6 +19,21 @@
 <!-- Custom styles for this template -->
 <link href="<%=request.getContextPath()%>/css/dashboard.css" rel="stylesheet">
 <link href="<%=request.getContextPath()%>/css/blog.css" rel="stylesheet">
+<script>
+//문서 로딩이 완료되었을때
+$(function(){
+	$("#modifyBtn").on("click",function(){
+		$("#frm").attr("method","get");
+		$("#frm").attr("action","<%=request.getContextPath()%>/userModify");
+		$("#frm").submit();
+	});
+	$("#deleteBtn").on("click",function(){
+		$("#frm").attr("method","post");
+		$("#frm").attr("action","<%=request.getContextPath()%>/deleteUser");
+		$("#frm").submit();
+	});
+});
+</script>
 </head>
 
 <body>
@@ -34,10 +49,17 @@
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			<% UserVo vo= (UserVo)request.getAttribute("user"); %>
 
-				
-				<form class="form-horizontal" role="form" action="<%=request.getContextPath()%>/userModify">
+																				
+				<form class="form-horizontal" id= "frm" role="form">
 					<input type="hidden" name="userid"value="<%=vo.getUserid()%>"/>
 
+					<div class="form-group">
+						<label for="userNm" class="col-sm-2 control-label">사용자 사진</label>
+						<div class="col-sm-10">
+							<img src ="<%=request.getContextPath() %>/profile/<%=vo.getUserid() %>.png"/>
+							
+						</div>
+					</div>
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">사용자 아이디</label>
 						<div class="col-sm-10">
@@ -88,9 +110,12 @@
 					</div>
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
-							<button type="submit" class="btn btn-default">사용자 수정</button>
+						 
+							<button type="button" id = "modifyBtn" class="btn btn-default">사용자 수정</button>
+							<button type="button" id = "deleteBtn" class="btn btn-default">사용자 삭제</button>
 						</div>
 					</div>
+					
 
 				</form>
 			</div>

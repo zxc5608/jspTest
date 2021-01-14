@@ -37,4 +37,22 @@
 	  SELECT COUNT(*)
 	  FROM users
   </select>
+  
+  
+  <update id="modifyUser" parameterType="userVo">
+  		UPDATE users SET usernm = #{usernm},
+		                 pass = #{pass},
+		                 reg_dt = #{reg_dt}, 
+		                 alias= #{alias},
+		                 addr1 = #{addr1},
+		                 addr2 = #{addr2},
+		                 zipcode = #{zipcode}
+		WHERE userid= #{userid}
+  
+  </update>
+  
+  <insert id="registUser" parameterType="userVo">
+  insert into users(userid, usernm, pass ,reg_dt, alias, addr1,addr2,zipcode)
+        values(#{userid},#{usernm},#{pass},#{reg_dt},#{alias},#{addr1},#{addr2},#{zipcode})
+  </insert>
 </mapper>  

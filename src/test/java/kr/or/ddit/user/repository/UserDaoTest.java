@@ -2,6 +2,7 @@ package kr.or.ddit.user.repository;
 
 import static org.junit.Assert.*;
 
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
@@ -68,6 +69,39 @@ public class UserDaoTest {
 		/***Then***/
 		
 		assertEquals(16,userCnt);
+		
+	}
+	@Test
+	public void ModifyUserTest() {
+		/***Given***/
+		UserDaoI userDao = new UserDao();
+		
+		//userid usernm pass reg_gt alias addr1 addr2 zipcode 
+		UserVo userVo = new UserVo("ddit","대덕인재","dditpass",new Date(),"개발원m","대전 중구 중앙로 76","4층 대덕인재개발원","34940");
+		
+		/***When***/
+		int updateCnt =  userDao.modifyUser(userVo);
+		
+		/***Then***/
+		
+		assertEquals(1,updateCnt);
+		
+	}
+	
+	@Test
+	public void insertUserTest() {
+		/***Given***/
+		UserDaoI userDao = new UserDao();
+		
+		//userid usernm pass reg_gt alias addr1 addr2 zipcode 
+		UserVo userVo = new UserVo("dd2","대덕인재1","dditpas1s",new Date(),"개발원2m1","대전 중1구 중앙로 76","4층 대덕2인재개발원","34140");
+		
+		/***When***/
+		int updateCnt =  userDao.registUser(userVo);
+		
+		/***Then***/
+		
+		assertEquals(1,updateCnt);
 		
 	}
 	

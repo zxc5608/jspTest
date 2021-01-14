@@ -103,7 +103,7 @@ $(function(){
 		</div>
 
 
-		<a class="btn btn-default pull-right">사용자 등록</a>
+		<a class="btn btn-default pull-right" href="<%=request.getContextPath()%>/user/registUser.jsp">사용자 등록</a>
 
 		<div class="text-center">
 		<!-- 페이지네이션 링크 활성 비활성  -->
@@ -119,10 +119,10 @@ $(function(){
 				페이지 4페이지 
 				
 			 --%>
-			 <%int pagination = (int)request.getAttribute("pagination");%>
 			 <li class="prev">
 				<a href="<%=request.getContextPath() %>pagingUser?page=1&pageSize=<%=pageVo.getPageSize()%>">«</a>
 			 </li>
+			 <%int pagination = (int)request.getAttribute("pagination");%>
 			 
 				<%for(int i=1; i<=pagination;i++){ 
 				

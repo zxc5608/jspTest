@@ -26,5 +26,9 @@ public interface UserDaoI {
 	//사용자 전체수 조회 
 	int selectAlluserCnt();
 	
-
+	//사용자 정보 수정
+	int modifyUser(UserVo userVo);
+	
+	//사용자 정보입력
+	int registUser(UserVo userVo);
 }

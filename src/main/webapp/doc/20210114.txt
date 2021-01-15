@@ -16,6 +16,7 @@
  상향식 (bottom Up)
   sql=> dao = > daoTest => service => serviceTest => controller= > jsp
  
+ 테스트코드 
  
 사용자 상세조회 페이지 사용자 이미지 추가
 사용자의 이미지는 webapp/profile에 저장

@@ -22,7 +22,7 @@
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
     
     <!--signin.css  -->
-    <link href="<%=request.getContextPath() %>/css/signin.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/signin.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="/css/signin.css" rel="stylesheet">
@@ -106,7 +106,7 @@
 
     <div class="container">
 
-      <form class="form-signin" id="frm" action="<%=request.getContextPath()%>/loginController" method="post">
+      <form class="form-signin" id="frm" action="${pageContext.request.contextPath}/loginController" method="post">
         <h2 class="form-signin-heading">login</h2>
         
         <label for="userid" class="sr-only">userid</label>

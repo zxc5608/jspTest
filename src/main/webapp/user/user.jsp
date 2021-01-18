@@ -17,19 +17,19 @@
 <%@include file="/common/common_lib.jsp" %>
 
 <!-- Custom styles for this template -->
-<link href="<%=request.getContextPath()%>/css/dashboard.css" rel="stylesheet">
-<link href="<%=request.getContextPath()%>/css/blog.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/dashboard.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/blog.css" rel="stylesheet">
 <script>
 //문서 로딩이 완료되었을때
 $(function(){
 	$("#modifyBtn").on("click",function(){
 		$("#frm").attr("method","get");
-		$("#frm").attr("action","<%=request.getContextPath()%>/userModify");
+		$("#frm").attr("action","${pageContext.request.contextPath}/userModify");
 		$("#frm").submit();
 	});
 	$("#deleteBtn").on("click",function(){
 		$("#frm").attr("method","post");
-		$("#frm").attr("action","<%=request.getContextPath()%>/deleteUser");
+		$("#frm").attr("action","${pageContext.request.contextPath}/deleteUser");
 		$("#frm").submit();
 	});
 });
@@ -56,7 +56,7 @@ $(function(){
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">사용자 사진</label>
 						<div class="col-sm-10">
-							<img src ="<%=request.getContextPath() %>/profile/<%=vo.getUserid() %>.png"/>
+							<img src ="${pageContext.request.contextPath}/profile/<%=vo.getUserid() %>.png"/>
 							
 						</div>
 					</div>

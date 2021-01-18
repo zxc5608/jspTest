@@ -2,7 +2,7 @@
 <%@page import="kr.or.ddit.user.model.UserVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,8 +19,8 @@
 <%@include file="/common/common_lib.jsp" %>
 
 <!-- Custom styles for this template -->
-<link href="<%=request.getContextPath()%>/css/dashboard.css" rel="stylesheet">
-<link href="<%=request.getContextPath()%>/css/blog.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/dashboard.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/blog.css" rel="stylesheet">
 
 <%
 List<UserVo>userlist=(List<UserVo>)request.getAttribute("userlist");
@@ -57,11 +57,10 @@ List<UserVo>userlist=(List<UserVo>)request.getAttribute("userlist");
 					<th>등록일시</th>
 				</tr>
 				
-		<%	
-		
-		
+<%-- 		<%	
 		for(int i = 0;i<userlist.size();i++){
 				UserVo uservo = userlist.get(i);
+	
 			
 				out.write("<tr>");
 				out.write("<td>"+uservo.getUserid()+"</td>");
@@ -71,12 +70,18 @@ List<UserVo>userlist=(List<UserVo>)request.getAttribute("userlist");
 				
 				
 				out.write("</tr>");
-							
-				
 			}
-				
-	
-		%>
+		%> --%>
+		<c:forEach items="${userlist }" var="user">
+			<tr>
+				<td>forEach ${user.userid }</td>
+				<td>${user.usernm }</td>
+				<td>${user.alias }</td>
+				<td>${user.getReg_dt_fmt() }</td>
+			
+			</tr>
+		
+		</c:forEach>
 		
 			</table>
 		</div>

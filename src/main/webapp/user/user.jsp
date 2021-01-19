@@ -1,6 +1,8 @@
 <%@page import="kr.or.ddit.user.model.UserVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+  <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"  %>
+  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,25 +53,25 @@ $(function(){
 
 																				
 				<form class="form-horizontal" id= "frm" role="form">
-					<input type="hidden" name="userid"value="<%=vo.getUserid()%>"/>
+					<input type="hidden" name="userid"value="${user.userid }"/>
 
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">사용자 사진</label>
 						<div class="col-sm-10">
-							<img src ="${pageContext.request.contextPath}/profile/<%=vo.getUserid() %>.png"/>
+							<img src ="${pageContext.request.contextPath}/profile/${user.userid }.png"/>
 							
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">사용자 아이디</label>
 						<div class="col-sm-10">
-							<label class="control-label"><%=vo.getUserid() %></label>
+							<label class="control-label">${user.userid }</label>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">사용자 이름</label>
 						<div class="col-sm-10">
-							<label class="control-label"><%=vo.getUsernm() %></label>
+							<label class="control-label">${user.usernm } </label>
 						</div>
 					</div>
 					<div class="form-group">
@@ -81,31 +83,31 @@ $(function(){
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">등록일시</label>
 						<div class="col-sm-10">
-							<label class="control-label"><%= vo.getReg_dt_fmt()%></label>
+							<label class="control-label"><fmt:formatDate value="${user.reg_dt }" pattern="yyyy.MM.dd" /></label>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">별명</label>
 						<div class="col-sm-10">
-							<label class="control-label"><%=vo.getAlias() %></label>
+							<label class="control-label">${user.alias }</label>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">도로주소</label>
 						<div class="col-sm-10">
-							<label class="control-label"><%=vo.getAddr1() %></label>
+							<label class="control-label">${user.addr1}</label>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">상세주소</label>
 						<div class="col-sm-10">
-							<label class="control-label"><%=vo.getAddr2() %></label>
+							<label class="control-label">${user.addr2}</label>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">우편번호코드</label>
 						<div class="col-sm-10">
-							<label class="control-label"><%=vo.getZipcode() %></label>
+							<label class="control-label">${user.zipcode}</label>
 						</div>
 					</div>
 					<div class="form-group">

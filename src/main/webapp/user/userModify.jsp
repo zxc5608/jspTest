@@ -1,6 +1,8 @@
 <%@page import="kr.or.ddit.user.model.UserVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"  %>
+  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,12 +61,12 @@ $(function(){
 
 				
 				<form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/userModify" method="post">
-					<input type="hidden" name="userid"value="<%=vo.getUserid()%>"/>
+					<input type="hidden" name="userid"value="${user.userid }"/>
 
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">사용자 아이디</label>
 						<div class="col-sm-10">
-						<label class="control-label"><%=vo.getUserid() %></label>
+						<label class="control-label">${user.userid }</label>
 						<%-- 	<input type="text" class="form-control" id="userId" name="userId"
 								placeholder="사용자 아이디" value="<%=vo.getUserid() %>"> --%>
 								
@@ -74,35 +76,35 @@ $(function(){
 						<label for="userNm" class="col-sm-2 control-label">사용자 이름</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="usernm" name="usernm"
-								placeholder="사용자 아이디" value="<%=vo.getUsernm() %>"/>
+								placeholder="사용자 아이디" value="${user.usernm }"/>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">비밀번호</label>
 						<div class="col-sm-10">
 							<input type="password" class="form-control"id="pass" name="pass"
-									placeholder="사용자 아이디" value="<%=vo.getPass()%>"/>		
+									placeholder="사용자 아이디" value="${user.pass }"/>		
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">등록일시</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control"id="reg_dt" name="reg_dt"
-								placeholder="사용자 아이디" value="<%=vo.getReg_dt_fmt() %>">
+								placeholder="사용자 아이디" value="<fmt:formatDate value="${user.reg_dt }" pattern="yyyy.MM.dd" />">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">별명</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control"id="alias" name="alias"
-								placeholder="사용자 아이디" value="<%=vo.getAlias() %>"/>
+								placeholder="사용자 아이디" value="${user.alias }"/>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">도로주소</label>
 						<div class="col-sm-8">
 							<input type="text" class="form-control"id="addr1" name="addr1"
-								placeholder="사용자 아이디" value="<%=vo.getAddr1() %>"readonly/>
+								placeholder="사용자 아이디" value="${user.addr1 }"readonly/>
 						</div>
 						<div class="col-sm-2">
 							<button type="button" id="addrbtn" class="btn btn-default">주소 검색</button>
@@ -112,14 +114,14 @@ $(function(){
 						<label for="userNm" class="col-sm-2 control-label">상세주소</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control"id="addr2" name="addr2"
-								placeholder="상세주소" value="<%=vo.getAddr2() %>"/>
+								placeholder="상세주소" value="${user.addr2}"/>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">우편번호코드</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control"id="zipcode" name="zipcode"
-								placeholder="사용자 아이디" value="<%=vo.getZipcode() %>"readonly/>
+								placeholder="사용자 아이디" value="${user.zipcode }"readonly/>
 						</div>
 					</div>
 					

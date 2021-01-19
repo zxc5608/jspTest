@@ -11,7 +11,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 
-@WebFilter("/*")
+//@WebFilter("/*")
 public class DefaultParameterFilter implements Filter{
 
 	@Override

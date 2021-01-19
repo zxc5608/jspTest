@@ -2,12 +2,14 @@ EL,JSTL ==> 표현식 스클립틀릿을 걷어내기 위함
 		==> jsp파일을 최대한 태그처럼 보이게 하기위함
 		(자바코드를 걷어낸다)
 
-JSTL 태그 라이브러리 사용방법 지시자 <%@ %>
+JSTL 태그 라이브러리 사용방법 
+지시자 <%@ %>
 1.taglib 지시자 선언
 <%@taglib prefix="네임스페이스 ",개발자가 편한대로 지정가능, 관습적으로 많이 사용하는 prefix를 보통 따름"
 		  uri="사용하려고하는 태그의 식별자" %> 
 
 core 태그 라이브러리 :c
+
 국제화 태그 라이브러리: fmt
 
 CORE tag 라이브러리
@@ -48,6 +50,33 @@ JSTL core 기타
 catch
 out
 
+
+FILTER
+요청을 처리할 servlet, jsp로 요청이 전달되기전에 사전에 먼저 요청을 받아 
+공통적인 작업을 처리할 수 있는 객체 
+
+1. 필터는 여러개 등록 할 수있다.
+	.요청 - 필터1 -필터2 ...최종적으로 해당 요청을 처리할 servlet, jsp로 요청이 전달
+	 servlet , jsp에 응답이 생성되면 거쳐온 필터의 역순으로 응답니 전달된다. 
+	 servlet ,jsp ==> 필터2 - 필터1 ---최종 응답 전달
+2. 필터 생성방법
+	Filter 인터페이스 구현
+	init, destroy , doFilter
+3. 필터 등록
+	web.xml등록
+	@webFilter
+
+실습= 요청 URI통계필터
+	request.getRequestURI()
+	Map<String, Integer> map;
+	key - uri, 값은 - 요청 횟수 
+	/login.jsp, 5
+	/pagingUser,15
+	
+	요청 통계자료를 담은 map객체를 다른 servlet,jsp에서도 활용하려면? applicationScope에 저장 
+	
+	
+	
 
 				
 

@@ -11,7 +11,8 @@
 <body>
 	<h3>if</h3>
 	<c:set var="userid" value="brown"/>
-	<%-- java
+	<%-- 
+		java
 		if() ==> test속성에 검사할 조건식을 기술 
 		userid 속성의 값이 brown인지 체크하고 brown일때만 화면에 userid속성을 출력
 		
@@ -25,12 +26,6 @@
 		<c:if test=${userid=='brown'}" > x
 		<c:if test=${userid=='brown'}"> o
 		
-		
-		<%
-		if( ((String)pageContext.getAttribute("userid")).equals("brown")){
-		out.write((String)pageContext.getAttribute("userid"));
-			}
-		%>
 		 
 	--%>
 	<%

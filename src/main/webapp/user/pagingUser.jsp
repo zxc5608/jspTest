@@ -76,16 +76,16 @@ $(function(){
 								</tr>
 
 				<c:forEach items="${userList }" var="user">
-			<tr>
-			<tr class='user' data-userid="${user.userid }">
-				<td>${user.userid }</td>
-				<td>${user.usernm }</td>
-				<td>${user.alias }</td>
-				<td>${user.getReg_dt_fmt() }</td>
-			
-			</tr>
-		
-		</c:forEach>
+					<tr>
+					<tr class='user' data-userid="${user.userid }">
+						<td>${user.userid }</td>
+						<td>${user.usernm }</td>
+						<td>${user.alias }</td>
+						<td>${user.getReg_dt_fmt() }</td>
+					
+					</tr>
+				
+				</c:forEach>
 
 
 							</table>
@@ -93,7 +93,7 @@ $(function(){
 
 
 						<a class="btn btn-default pull-right"
-							href="<%=request.getContextPath()%>/user/registUser.jsp">사용자
+							href="${pageContext.request.contextPath}/user/registUser.jsp">사용자
 							등록</a>
 
 						<div class="text-center">
@@ -101,12 +101,12 @@ $(function(){
 
 							<ul class="pagination">
 								<%--
-				pagination 이 4이므로 3번 반복된다
-				사용자수 16명
-				페이지 사이즈5
-				페이지 4페이지 
-				
-			 --%>
+										pagination 이 4이므로 3번 반복된다
+										사용자수 16명
+										페이지 사이즈5
+										페이지 4페이지 
+										
+									 --%>
 								<li class="prev"><a
 									href="${pageContext.request.contextPath}pagingUser?page=1&pageSize=${pageVo.getPageSize()}">«</a>
 								</li>

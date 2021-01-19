@@ -18,10 +18,16 @@ import kr.or.ddit.user.service.UserServiceI;
 @WebServlet("/registUser")
 public class registUser extends HttpServlet {
 	private UserServiceI userservice = new UserService();
-
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.getRequestDispatcher("/user/registUser.jsp").forward(req, resp);
+		
+	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setCharacterEncoding("utf-8");
+
+		// servlet의 dopost메소드마다 실행필요 ==> Filter
+		// req.setCharacterEncoding("utf-8");
 
 		String userid = req.getParameter("userid");
 		String usernm = req.getParameter("usernm");
@@ -52,9 +58,10 @@ public class registUser extends HttpServlet {
 		if (updateCnt == 1) {
 			resp.sendRedirect(req.getContextPath() + "/pagingUser");
 		} else {
-			doPost(req, resp);
+			doGet(req, resp);
 
 		}
 
 	}
+
 }

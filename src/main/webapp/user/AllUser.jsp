@@ -22,11 +22,7 @@
 <link href="${pageContext.request.contextPath}/css/dashboard.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/blog.css" rel="stylesheet">
 
-<%
-List<UserVo>userlist=(List<UserVo>)request.getAttribute("userlist");
 
-		
-%>
 </head>
 
 <body>
@@ -57,7 +53,7 @@ List<UserVo>userlist=(List<UserVo>)request.getAttribute("userlist");
 					<th>등록일시</th>
 				</tr>
 				
-<%-- 		<%	
+<%-- 	<%	
 		for(int i = 0;i<userlist.size();i++){
 				UserVo uservo = userlist.get(i);
 	
@@ -71,7 +67,8 @@ List<UserVo>userlist=(List<UserVo>)request.getAttribute("userlist");
 				
 				out.write("</tr>");
 			}
-		%> --%>
+		%>  --%>
+		
 		<c:forEach items="${userlist }" var="user">
 			<tr>
 				<td>forEach ${user.userid }</td>

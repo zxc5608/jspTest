@@ -63,6 +63,25 @@
     <location>/error/500/500.jsp</location>
   </error-page>
   
+  <filter>
+    <filter-name>requestCountFilter</filter-name>
+  	<filter-class>kr.or.ddit.filter.RequestCounterFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>requestCountFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <filter>
+    <filter-name>encodingFilter</filter-name>
+  	<filter-class>kr.or.ddit.filter.encodingFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>encodingFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  
   <resource-ref>
    <description>DB Connection</description>
    <res-ref-name>jdbc/oracleDB</res-ref-name>

@@ -1,0 +1,29 @@
+1. 세션 체크 filter :SessionCheckFilter
+	로그인을 하지 않은 사용자는 시스템 내부 메뉴를 사용하지 못하도록 제어
+	
+	현상황: localhost/allUser url로 직접 접속하면 로그인 하지 않아도 사용자 리스트를 볼수있음
+	개선: 서블릿으로 요청이 전달되기전에 filter에서 세션이 있는지 (S_USER)체크하여
+		세션 정보가 있을 경우만 서블릿으로 요청 전달
+		****모든 URL이 아닌 특정 URL에 대해서만 체크가 되도록 해야함
+		localhost/login.jsp
+		
+		/*
+		request.getRequestURI();
+		
+		세션정보가 없을 경우 로그인 화면으로 이동
+		
+		
+2교시
+		
+request객체에 생성되어있는parameterMap은 수정이 불가능한 Map
+
+즉 임의로 파라미터를추가하는 작업은 불가능
+Filter를 이용하여 요청을 servlet으로 전달하기 전에
+서버가 생성한 request객체를 이용하여 새로운 request객체를 생성
+--> requestWrapper
+
+원본 parmeter를 복사하여 수정가능한 Map에 복사 
+request객체가 원본 파라미터 맵이 아닌, 우리가 만든 map객체를 사용할수있도록
+parameter관련 메소드를 4개 재정의
+
+wrapper==> HttpServletRequestWrapper클래스 상속

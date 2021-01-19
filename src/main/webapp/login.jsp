@@ -22,7 +22,7 @@
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
     
     <!--signin.css  -->
-    <link href="${pageContext.request.contextPath}/css/signin.css" rel="stylesheet">
+    <link href="${cp}/css/signin.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="/css/signin.css" rel="stylesheet">
@@ -105,8 +105,8 @@
   <body>
 
     <div class="container">
-	UNT_CD:${param.UNT_CD }/<%=request.getParameter("UNT_CD") %>
-      <form class="form-signin" id="frm" action="${pageContext.request.contextPath}/loginController" method="post">
+	cp: ${cp }/<%=application.getAttribute("cp") %>
+      <form class="form-signin" id="frm" action="${cp}/loginController" method="post">
         <h2 class="form-signin-heading">login</h2>
         
         <label for="userid" class="sr-only">userid</label>

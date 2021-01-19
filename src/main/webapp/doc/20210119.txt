@@ -50,3 +50,27 @@ selectLang.jsp요청을 보내는 두가지 경로가 존재
 
 
 
+
+이벤트 리스너
+이벤트 종류
+
+1.life cycle
+	1)request 		: ServletRequestListener
+	2)session 		: HttpSessionListener
+	3)application   : ServletContextListener
+		
+		${pageContext.request.contextPath}  ==> ${cp}
+		서버가 기동이 되었을 때
+		application scope에 cp라는 속성으로 contextPath값을 저장
+		 
+2.attribute
+	사용자가 로그인을 할경우 :S_USER 속성을 session에 추가
+	Set<String>로 로그인한 사용자 아이디를 관리 
+	 
+
+리스너 생성(알맞은 인터페이스 구현한 클래스 생성) ApplicationListener.java
+리스너 등록 (web.xml)
+==>
+${cp }
+
+pageContext.request.contextPath ==>cp

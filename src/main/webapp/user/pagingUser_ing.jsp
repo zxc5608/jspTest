@@ -20,8 +20,8 @@
 <%@include file="/common/common_lib.jsp" %>
 
 <!-- Custom styles for this template -->
-<link href="${pageContext.request.contextPath}/css/dashboard.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/blog.css" rel="stylesheet">
+<link href="${cp}/css/dashboard.css" rel="stylesheet">
+<link href="${cp}/css/blog.css" rel="stylesheet">
 
 
 
@@ -44,7 +44,7 @@ $(function(){
 </head>
 
 <body>
-	<form id ="frm" action="${pageContext.request.contextPath}/user">
+	<form id ="frm" action="${cp}/user">
 		<input type= "hidden" id= "userid" name= "userid" value=""/>
 	</form>
 
@@ -106,12 +106,12 @@ $(function(){
 		</div>
 
 
-		<a class="btn btn-default pull-right" href="${pageContext.request.contextPath}/user/registUser.jsp">사용자 등록</a>
+		<a class="btn btn-default pull-right" href="${cp}/user/registUser.jsp">사용자 등록</a>
 
 		<div class="text-center">
 			<ul class="pagination">
 			 <li class="prev">
-				<a href="${pageContext.request.contextPath}pagingUser?page=1&pageSize=${pageVo.getPageSize()}">«</a>
+				<a href="${cp}pagingUser?page=1&pageSize=${pageVo.getPageSize()}">«</a>
 			 </li>
 			<c:forEach begin="1" end="${pagination }" var="i">
 					<c:choose>
@@ -119,12 +119,12 @@ $(function(){
 						<li class= "active"><span>${i }</span></li>
 						</c:when>
 						<c:otherwise>
-						<li><a href="${pageContext.request.contextPath}pagingUser?page=${i }&pageSize=${pageVo.getPageSize()}">${i }</a></li>
+						<li><a href="${cp}pagingUser?page=${i }&pageSize=${pageVo.getPageSize()}">${i }</a></li>
 						</c:otherwise>
 					</c:choose>	
 				</c:forEach>	 				
 				<li class="next">
-					<a href="${pageContext.request.contextPath}pagingUser?page=${pagination}&pageSize=${pageVo.getPageSize() }">»</a>
+					<a href="${cp}pagingUser?page=${pagination}&pageSize=${pageVo.getPageSize() }">»</a>
 				</li>
 				
 					<%-- 	 <%int pagination = (int)request.getAttribute("pagination");%>
@@ -135,7 +135,7 @@ $(function(){
 					<li class= "active"><span><%=i %></span></li>
 					<% }
 					else{%>
-						<li><a href="${pageContext.request.contextPath}pagingUser?page=<%=i %>&pageSize=<%=pageVo.getPageSize()%>"><%=i %></a></li>
+						<li><a href="${cp}pagingUser?page=<%=i %>&pageSize=<%=pageVo.getPageSize()%>"><%=i %></a></li>
 					
 					<% }%>													
 				<% }%>	 --%>

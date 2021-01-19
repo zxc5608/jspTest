@@ -3,8 +3,8 @@
    
    <ul class="nav nav-sidebar">
 		<li class="active"><a href="#">Main <span class="sr-only">(current)</span></a></li>
-		<li class="active"><a href="${pageContext.request.contextPath}/AllUser">전체사용자</a></li>
-		<li class="active"><a href="${pageContext.request.contextPath}/pagingUser">사용자페이징 리스트</a></li>
+		<li class="active"><a href="${cp}/AllUser">전체사용자</a></li>
+		<li class="active"><a href="${cp}/pagingUser">사용자페이징 리스트</a></li>
 		
 		<%--
 			localhost/pagingUser?page=1&pageSize=5로 요청시
@@ -15,7 +15,7 @@
 		 --%>
 		
 		
-		<li class="active"><a href="${pageContext.request.contextPath}/EmpAll">직원</a></li>
+		<li class="active"><a href="${cp}/EmpAll">직원</a></li>
 		
 	</ul>
 	<%--

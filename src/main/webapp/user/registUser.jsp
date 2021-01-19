@@ -17,8 +17,8 @@
 <%@include file="/common/common_lib.jsp" %>
 
 <!-- Custom styles for this template -->
-<link href="${pageContext.request.contextPath}/css/dashboard.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/blog.css" rel="stylesheet">
+<link href="${cp}/css/dashboard.css" rel="stylesheet">
+<link href="${cp}/css/blog.css" rel="stylesheet">
 
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
@@ -59,7 +59,7 @@ $(function(){
 
 				contextPath.el
 				<form class="form-horizontal" role="form" 
-									action="${pageContext.request.contextPath}/registUser" method="post">
+									action="${cp}/registUser" method="post">
 					
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">사용자 아이디</label>

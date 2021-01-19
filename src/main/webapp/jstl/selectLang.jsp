@@ -23,7 +23,7 @@ $(function(){
 </head>
 <body>
 param :[${param.lang }]
-<form action="${pageContext.request.contextPath }/jstl/selectLang.jsp">
+<form action="${cp }/jstl/selectLang.jsp">
 <select name="lang">              
 	<option value="ko" selected >한국어</option>
 	<option value="en" selected >english</option>

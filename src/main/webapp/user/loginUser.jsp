@@ -7,11 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
-	
-	webapp/index.jsp ==> localhost/index.jsp
-	
-	webapp/image/brown.png
-	<img src="${cp}/image/brown.png"/>
+	user set : ${USER_SET }
 </body>
 </html>

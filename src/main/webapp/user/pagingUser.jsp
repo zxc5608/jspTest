@@ -100,7 +100,7 @@ $(function(){
 
 
 						<a class="btn btn-default pull-right"
-							href="${pageContext.request.contextPath}/user/registUser.jsp">사용자
+							href="${cp}/user/registUser.jsp">사용자
 							등록</a>
 
 						<div class="text-center">
@@ -115,7 +115,7 @@ $(function(){
 										
 									 --%>
 								<li class="prev"><a
-									href="${pageContext.request.contextPath}pagingUser?page=1&pageSize=${pageVo.getPageSize()}">«</a>
+									href="${cp}pagingUser?page=1&pageSize=${pageVo.getPageSize()}">«</a>
 								</li>
 								<c:forEach begin="1" end="${pagination }" var="i">
 									<c:choose>
@@ -124,12 +124,12 @@ $(function(){
 										</c:when>
 										<c:otherwise>
 											<li><a
-												href="${pageContext.request.contextPath}pagingUser?page=${i }&pageSize=${pageVo.getPageSize()}">${i }</a></li>
+												href="${cp}pagingUser?page=${i }&pageSize=${pageVo.getPageSize()}">${i }</a></li>
 										</c:otherwise>
 									</c:choose>
 								</c:forEach>
 								<li class="next"><a
-									href="${pageContext.request.contextPath}pagingUser?page=${pagination}&pageSize=${pageVo.getPageSize() }">»</a>
+									href="${cp}pagingUser?page=${pagination}&pageSize=${pageVo.getPageSize() }">»</a>
 								</li>
 
 

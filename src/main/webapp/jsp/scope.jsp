@@ -8,7 +8,7 @@
 </head>
 <body>
 scope.jsp
-<form action="${pageContext.request.contextPath}/scope" method="post">
+<form action="${cp}/scope" method="post">
 
 	<input name="scope" type="text" value="brown"/><br>
 	<input type="submit" value="전송"/><br>

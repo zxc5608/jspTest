@@ -32,6 +32,29 @@
   
   
   </select>
+  
+	<select id="searchPagingUser" resultType="userVo" parameterType="map">
+		select *
+		from(select ROWNUM rn, a.*
+			 from(select *
+				  from users
+				  where ${field} like '%' || #{data} || '%'
+				  order by userid)a
+			 where ROWNUM &lt;= #{page}*#{pagesize})
+		where rn BETWEEN (#{page}-1)*#{pagesize}+1 AND #{page}*#{pagesize}
+	</select>
+	
+	<select id="searchAllUserCnt" resultType="int" parameterType="map">
+		select count(*) from users where ${field} like '%' || #{data} || '%'
+	</select>
+	
+	<!-- 전체 사용자 수 조회 -->
+	<select id="selectAllUserCnt" resultType="int">
+		select count(*) from users
+	</select>
+
+  
+
   <!-- 전체 사용자 수 조회 -->
   <select id="selectAlluserCnt" resultType="int">
 	  SELECT COUNT(*)
@@ -47,18 +70,22 @@
 		                 
 		                 addr1 = #{addr1},
 		                 addr2 = #{addr2},
-		                 zipcode = #{zipcode}
+		                 zipcode = #{zipcode},
+		                 filename=#{filename},
+		                 realfilename=#{realfilename}
+		                 
+		                
 		                 
 		WHERE userid= #{userid}
   
   </update>
   
   <insert id="registUser" parameterType="userVo">
-  insert into users(userid, usernm, pass ,reg_dt,
-  					 alias, addr1,addr2,zipcode)
+  insert into users(userid, usernm, pass ,
+  					 alias, addr1,addr2,zipcode,filename,realfilename)
   
-        values(#{userid},#{usernm},#{pass},#{reg_dt},
-        		#{alias},#{addr1},#{addr2},#{zipcode})
+        values(#{userid},#{usernm},#{pass},
+        		#{alias},#{addr1},#{addr2},#{zipcode},#{filename},#{realfilename})
   </insert>
   <!--사용자 삭제 파라미터를 문자열로 넘겨줬음-->
   <delete id="deleteUser" parameterType="String">

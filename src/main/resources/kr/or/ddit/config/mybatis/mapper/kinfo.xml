@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board">
+	<!--select된 컬럼과 resultType에 기술된 클래스의 필드 이름이 동일하면 자동으로 값을 넣어준다 resultType: 
+		한 행의 정보를 저장핤구있는 클래스 타입을 명시 -->
+	<select id="selectUser" resultType="userVo"
+		parameterType="String">
+		SELECT *
+		FROM users
+		WHERE userid= #{value}
+	</select>
+
+	<select id="selectAllBoard" resultType="boardVo">
+		SELECT *
+		FROM KBOARD_INFO
+	</select>
+
+	<insert id="registBoard" parameterType="boardVo">
+		insert into kboard_info(bor_no, bor_act, bor_name)
+		values(kboard_seq.nextval,#{bor_act},#{bor_name})
+
+	</insert>
+	<update id="modifyboard">
+		UPDATE kboard_info SET bor_act=#{bor_act}
+
+		WHERE bor_no =#{bor_no}
+	</update>
+
+	<select id="selectBoard" resultType="boardVo">
+		SELECT * FROM KBOARD_INFO WHERE bor_act = 1
+
+	</select>
+
+	<select id="selectPost" parameterType="pageVo"
+		resultType="postVo">
+
+		SELECT LPAD(' ', 3*(LEVEL-1), '🚗')|| TITLE TITLE, bor_no, post_no, USER_ID,
+		REG_DT,POST_DEL, LEVEL boardLevel
+		FROM
+		(SELECT ROWNUM rn, a.*
+		FROM
+		(SELECT *
+		FROM KBOARD_POST
+		WHERE bor_no = #{bor_no}
+		ORDER BY post_no DESC
+		) a
+		WHERE ROWNUM &lt;= #{page} * #{pageSize})
+		WHERE rn BETWEEN (#{page}-1) * #{pageSize} +1 AND #{page} * #{pageSize}
+		START WITH BOR_C_NM IS NULL
+		CONNECT BY PRIOR POST_NO = BOR_C_NM
+		ORDER SIBLINGS BY POST_NO DESC
+
+	</select>
+
+	<select id="selectPostCnt" resultType="int" parameterType="int">
+
+		SELECT COUNT(*) FROM kboard_post WHERE bor_no = #{bor_no}
+
+	</select>
+
+	<insert id="RegistBoardPost" parameterType="postVo">
+
+		INSERT INTO KBOARD_POST (BOR_NO, POST_NO, USER_ID, TITLE, CONT, REG_DT,
+		POST_DEL, BOR_C_NM, POST_C_NO, REP_USER_ID)
+		values (#{bor_no}, kboard_post_seq.nextval ,#{user_id}, #{title}, #{cont},
+		sysdate, #{post_del},'','','')
+
+	</insert>
+
+	<insert id="repleinsert" parameterType="postVo">
+
+		INSERT INTO KBOARD_POST (BOR_NO, POST_NO, USER_ID, TITLE, CONT, REG_DT,
+		POST_DEL, BOR_C_NM, POST_C_NO, REP_USER_ID)
+		values (#{bor_no}, kboard_post_seq.nextval ,#{user_id}, #{title}, #{cont},
+		sysdate, #{post_del},#{bor_c_nm},'','')
+
+	</insert>
+
+	<select id="selectDetail" resultType="postVo"
+		parameterType="postVo">
+		SELECT *
+		FROM KBOARD_POST
+		WHERE bor_no= #{bor_no} AND post_no= #{post_no}
+	</select>
+
+	<select id="ComSelect" resultType="comVo">
+		SELECT *
+		FROM KPOST_COM
+		WHERE post_no=#{post_no}
+	</select>
+
+	<insert id="cominsert" parameterType="comVo">
+		INSERT INTO kpost_com (com_no,com_user_id, com_date, com_con, com_del,
+		bor_no, post_no, user_id)
+		VALUES(kpost_com_seq.nextval,#{com_user_id}, sysdate, #{com_con}, 1, #{bor_no}, #{post_no}, #{user_id})
+
+	</insert>
+
+	<update id="reviewupdate" parameterType="comVo">
+		update kpost_com  set com_con= #{com_con} where bor_no=#{bor_no} and post_no=#{post_no} and com_no=#{com_no}
+		
+	</update>
+
+
+	<update id="UpdateBoardPost" parameterType="postVo">
+		UPDATE kboard_post SET title = #{title}, cont= #{cont} ,REG_DT=sysdate
+		where post_no = #{post_no}
+	</update>
+
+
+	<delete id="deleteBoardPost" parameterType="int">
+		update KBOARD_POST set POST_DEL= 0, title ='삭제된 게시글입니다'
+		where post_no = #{post_no}
+	</delete>
+
+	<delete id="reviewDelete" parameterType="int">
+
+		update kpost_com set COM_DEL= 0, com_con='삭제된 댓글입니다'
+		where com_no = #{com_no}
+	</delete>
+	
+	<select resultType="int" id="selectMaxPostNo">
+		SELECT MAX(post_no) FROM KBOARD_POST 
+	</select>
+</mapper>  

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
-  <display-name>jsp</display-name>
+  <display-name>spring</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -9,102 +9,47 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  <servlet>
-    <servlet-name>basicServlet</servlet-name>
-    <servlet-class>kr.or.ddit.servlet.basic.BasicServlet</servlet-class>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>basicServlet</servlet-name>
-    <url-pattern>/basicServlet</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>TimesTableServlet</servlet-name>
-    <servlet-class>kr.or.ddit.servlet.basic.TimesTableServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>TimesTableServlet</servlet-name>
-    <url-pattern>/TimesTableServlet</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>Scope</display-name>
-    <servlet-name>Scope</servlet-name>
-    <servlet-class>kr.or.ddit.servelt.scope.Scope</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Scope</servlet-name>
-    <url-pattern>/Scope</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>mulCalculation</display-name>
-    <servlet-name>mulCalculation</servlet-name>
-    <servlet-class>kr.or.ddit.servlet.scope.mulCalculation</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>mulCalculation</servlet-name>
-    <url-pattern>/mulcalculation</url-pattern>
-  </servlet-mapping>
-  <error-page>
-    <exception-type>java.lang.ArithmeticException</exception-type>
-    <location>/error/type/ariError.jsp</location>
-  </error-page>
-  <error-page>
-    <exception-type>java.lang.RuntimeException</exception-type>
-    <location>/error/type/runError.jsp</location>
-  </error-page>
-  <error-page>
-    <error-code>404</error-code>
-    <location>/error/404/404.jsp</location>
-  </error-page>
-  <error-page>
-    <error-code>500</error-code>
-    <location>/error/500/500.jsp</location>
-  </error-page>
   
-<!--   <filter>
-    <filter-name>requestCountFilter</filter-name>
-  	<filter-class>kr.or.ddit.filter.RequestCounterFilter</filter-class>
-  </filter>
-  <filter-mapping>
-  	<filter-name>requestCountFilter</filter-name>
-  	<url-pattern>/*</url-pattern>
-  </filter-mapping>
+  <context-param>
+  <param-name>contextConfigLocation</param-name>
+  <param-value>
+  classpath:/kr/or/ddit/config/spring/root-context.xml
+  classpath:/kr/or/ddit/config/spring/datasource-context.xml
+  </param-value>
+  </context-param>
+<!--   classpath:/kr/or/ddit/config/spring/aop-context.xml
+ -->  
+  <listener>
+  	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
   
+  <servlet>
+  	<servlet-name>dispatcherServlet</servlet-name>
+  	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  	<init-param>
+  		<param-name>contextConfigLocation</param-name>
+  		<param-value>classpath:/kr/or/ddit/config/spring/application-context.xml
+  		</param-value>
+  		<!-- classpath:/kr/or/ddit/config/spring/interceptor-context.xml -->
+  	</init-param>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>dispatcherServlet</servlet-name>
+  	<url-pattern>/</url-pattern>
+  </servlet-mapping>
+  
+  <!-- post parameter encoding -->
   <filter>
-    <filter-name>encodingFilter</filter-name>
-  	<filter-class>kr.or.ddit.filter.encodingFilter</filter-class>
+  	<filter-name>characterEncodingFilter</filter-name>
+  	<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+  	<init-param>
+  		<param-name>encoding</param-name>
+  		<param-value>utf-8</param-value>
+  	</init-param>
   </filter>
   <filter-mapping>
-  	<filter-name>encodingFilter</filter-name>
+  	<filter-name>characterEncodingFilter</filter-name>
   	<url-pattern>/*</url-pattern>
   </filter-mapping>
-  
-  <filter>
-    <filter-name>sessionCheckFilter</filter-name>
-  	<filter-class>kr.or.ddit.filter.SessionCheckFilter</filter-class>
-  </filter>
-  <filter-mapping>
-  	<filter-name>sessionCheckFilter</filter-name>
-  	<url-pattern>/*</url-pattern>
-  </filter-mapping>
-   -->
-   <listener>
-   	<listener-class>kr.or.ddit.listener.ApplicationListener</listener-class>
-   </listener>
-   <listener>
-   		<listener-class>kr.or.ddit.listener.LoginUserListener</listener-class>
-   </listener>
-  
-  <resource-ref>
-   <description>DB Connection</description>
-   <res-ref-name>jdbc/oracleDB</res-ref-name>
-   <res-type>javax.sql.DataSource</res-type>
-   <res-auth>Container</res-auth>
-</resource-ref>
-  
-
-
-  
 </web-app>

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpSessionBindingEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import kr.or.ddit.user.model.UserVo;
+import kr.or.ddit.board.model.UserVo;
 
 public class LoginUserListener implements HttpSessionAttributeListener{
 	private static final Logger logger = LoggerFactory.getLogger(LoginUserListener.class);
